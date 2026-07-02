@@ -1,0 +1,146 @@
+/* Paleta de colores neurodivergencia */
+:root {
+    --aura-red: #E4032F;
+    --aura-yellow: #FFD700;
+    --aura-green: #00A651;
+    --aura-blue: #004DFF;
+    --aura-orange: #FF8C00;
+    --aura-dark: #1a1a2e;
+    --aura-light: #f8f9fa;
+}
+
+/* Tipografía accesible */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    padding-top: 76px;
+    color: #212529;
+    background-color: #ffffff;
+}
+
+/* Clases de color */
+.text-aura-red {
+    color: var(--aura-red);
+}
+
+.text-aura-yellow {
+    color: var(--aura-yellow);
+}
+
+.text-aura-green {
+    color: var(--aura-green);
+}
+
+.text-aura-blue {
+    color: var(--aura-blue);
+}
+
+.text-aura-orange {
+    color: var(--aura-orange);
+}
+
+.bg-aura-red {
+    background-color: var(--aura-red);
+}
+
+.bg-aura-yellow {
+    background-color: var(--aura-yellow);
+}
+
+.bg-aura-green {
+    background-color: var(--aura-green);
+}
+
+.bg-aura-blue {
+    background-color: var(--aura-blue);
+}
+
+.bg-aura-orange {
+    background-color: var(--aura-orange);
+}
+
+/* Navbar */
+.navbar-brand .aura-brand {
+    color: var(--aura-blue);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.navbar-brand small {
+    font-size: 0.7rem;
+    font-weight: 300;
+}
+
+/* Hero */
+.hero-section {
+    height: 90vh;
+    background-color: #0f1630;
+    background-image:
+        linear-gradient(135deg, rgba(0, 77, 255, 0.28) 0%, rgba(228, 3, 47, 0.18) 100%),
+        url('../assets/img/hero.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    opacity: 0.9;
+}
+
+.hero-section .highlight {
+    color: var(--aura-yellow);
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+/* Botones personalizados */
+.btn-primary {
+    background-color: var(--aura-blue);
+    border-color: var(--aura-blue);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--aura-red);
+    border-color: var(--aura-red);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(228, 3, 47, 0.3);
+}
+
+/* Tarjetas de servicios */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 20px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.card-icon {
+    margin-top: 1rem;
+}
+
+/* Formulario */
+.form-control:focus {
+    border-color: var(--aura-blue);
+    box-shadow: 0 0 0 0.25rem rgba(0, 77, 255, 0.25);
+}
+
+.invalid-feedback {
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    border-top: 4px solid var(--aura-yellow);
+}
+
+/* Responsive extras */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 70vh;
+        background-position: 40% center;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+}

@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AURA · Biometric Resonator Core</title>
+
+    <!-- estilos pagina -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Google Fonts (accesibilidad) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- seguridad  -->
+    <meta http-equiv="X-content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="no-referrer" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+        default-src 'self';
+        script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://kit.fontawesome.com;
+        style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com;
+        img-src 'self' data: https://picsum.photos https://images.unsplash.com;
+        font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
+        connect-src 'self';
+        frame-ancestors 'none';
+    "
+    />
+  </head>
+  <body>
+    <!-- Prevenir iframes (clickjacking) -->
+    <script>
+      if (window.top !== window.self) {
+        window.top.location = window.self.location;
+      }
+    </script>
+
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm"
+    >
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="#">
+          <span class="aura-brand">AURA</span>
+          <small class="text-muted ms-1">bionetric resonator core</small>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#sobre">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#servicios">Servicios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacto">Contacto</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="inicio" class="hero-section d-flex align-items-center">
+      <div class="container text-center text-white">
+        <h1 class="display-3 fw-bold animate__animated animate__fadeInDown">
+          Resonancia <span class="highlight">neurodivergente</span>
+        </h1>
+        <p class="lead mb-4">
+          Tecnología bionétrica para potenciar la mente única.
+        </p>
+        <a
+          href="#contacto"
+          class="btn btn-primary btn-lg rounded-pill px-5 shadow"
+          >Descubre más</a
+        >
+      </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h2 class="display-5 fw-bold">¿Qué es AURA?</h2>
+            <p class="lead mt-3">
+              Somos un equipo interdisciplinario que trabaja en darsolición a
+              dicerción y deserción asociados a los patrones cognitivos de la
+              neurodivergencia.
+            </p>
+            <p>
+              Nuestra tecnología utiliza algoritmos adaptativos que se
+              sincronizan con la actividad cerebral, ofreciendo experiencias
+              personalizadas para el aprendizaje, la creatividad y el bienestar.
+            </p>
+            <div class="d-flex gap-3 mt-4">
+              <div><i class="fas fa-brain fa-2x text-aura-blue"></i></div>
+              <div>
+                <i class="fas fa-wave-square fa-2x text-aura-green"></i>
+              </div>
+              <div><i class="fas fa-infinity fa-2x text-aura-red"></i></div>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-4 mt-lg-0">
+            <img
+              src="https://picsum.photos/seed/aura/600/400"
+              alt="AURA ilustración"
+              class="img-fluid rounded-4 shadow-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center display-5 fw-bold mb-5">Nuestros resonadores</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-4">
+              <div class="card-icon">
+                <i class="fas fa-microchip fa-3x text-aura-red"></i>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Core Neural</h5>
+                <p class="card-text">
+                  Resonador de base para potenciar la concentración y el estado
+                  de flujo.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-4">
+              <div class="card-icon">
+                <i class="fas fa-puzzle-piece fa-3x text-aura-yellow"></i>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Creative Sync</h5>
+                <p class="card-text">
+                  Estimula la creatividad y la resolución de problemas mediante
+                  ondas alfa.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-4">
+              <div class="card-icon">
+                <i class="fas fa-heartbeat fa-3x text-aura-green"></i>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Emotional Balance</h5>
+                <p class="card-text">
+                  Regulación emocional y reducción del estrés con biofeedback.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="display-5 fw-bold text-center mb-4">Conecta con AURA</h2>
+            <p class="text-center text-muted mb-5">
+              Déjanos tu mensaje y te responderemos en menos de 24h.
+            </p>
+            <form id="contactForm" novalidate>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="nombre" class="form-label">Nombre</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nombre"
+                    placeholder="Tu nombre"
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Por favor, ingresa tu nombre.
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label for="email" class="form-label"
+                    >Correo electrónico</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder="ejemplo@dominio.com"
+                    required
+                  />
+                  <div class="invalid-feedback">Correo inválido.</div>
+                </div>
+                <div class="col-12">
+                  <label for="mensaje" class="form-label">Mensaje</label>
+                  <textarea
+                    class="form-control"
+                    id="mensaje"
+                    rows="4"
+                    placeholder="¿Cómo podemos ayudarte?"
+                    required
+                  ></textarea>
+                  <div class="invalid-feedback">Escribe un mensaje.</div>
+                </div>
+                <div class="col-12 text-center">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-lg rounded-pill px-5 shadow"
+                  >
+                    <i class="fas fa-paper-plane me-2"></i>Enviar
+                  </button>
+                </div>
+              </div>
+            </form>
+            <div id="formFeedback" class="mt-3 text-center"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+      <div class="container text-center">
+        <p class="mb-0">
+          &copy; 2026 AURA bionetric resonator core. Todos los derechos
+          reservados.
+        </p>
+        <p class="small text-muted">
+          Neurodiversidad como motor de innovación.
+        </p>
+      </div>
+    </footer>
+
+    <!-- scripts  -->
+    <script src="js/script.js"></script>
+  </body>
+</html>
