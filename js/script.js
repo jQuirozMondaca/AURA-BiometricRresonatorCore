@@ -1,7 +1,12 @@
 // 1. SEGURIDAD ANTICLONACIÓN Y DOMINIO
 
 (function verificarDominio() {
-  const dominiosPermitidos = ["aura-resonator.com", "localhost", "127.0.0.1"];
+  const dominiosPermitidos = [
+    "aura-resonator.com",
+    "vercel.app",
+    "localhost",
+    "127.0.0.1",
+  ];
   const host = window.location.hostname;
   const permitido = dominiosPermitidos.some((d) => host.includes(d));
   if (!permitido) {
