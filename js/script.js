@@ -1,27 +1,27 @@
 // 1. SEGURIDAD ANTICLONACIÓN Y DOMINIO
 
-(function verificarDominio() {
-  const dominiosPermitidos = [
-    "aura-resonator.com",
-    "vercel.app",
-    "localhost",
-    "127.0.0.1",
-  ];
-  const host = window.location.hostname;
-  const permitido = dominiosPermitidos.some((d) => host.includes(d));
-  if (!permitido) {
-    document.body.innerHTML = `
-            <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;text-align:center;padding:20px;">
-                <div>
-                    <h1 style="color:#E4032F;">⚠️ Acceso no autorizado</h1>
-                    <p>Este sitio está protegido contra clonación. Solo se permite su ejecución en dominios autorizados.</p>
-                    <p><small>Contacta con el administrador si crees que esto es un error.</small></p>
-                </div>
-            </div>
-        `;
-    throw new Error("Dominio no autorizado");
-  }
-})();
+// (function verificarDominio() {
+//   const dominiosPermitidos = [
+//     "aura-resonator.com",
+//     "vercel.app",
+//     "localhost",
+//     "127.0.0.1",
+//   ];
+//   const host = window.location.hostname;
+//   const permitido = dominiosPermitidos.some((d) => host.includes(d));
+//   if (!permitido) {
+//     document.body.innerHTML = `
+//             <div style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;text-align:center;padding:20px;">
+//                 <div>
+//                     <h1 style="color:#E4032F;">⚠️ Acceso no autorizado</h1>
+//                     <p>Este sitio está protegido contra clonación. Solo se permite su ejecución en dominios autorizados.</p>
+//                     <p><small>Contacta con el administrador si crees que esto es un error.</small></p>
+//                 </div>
+//             </div>
+//         `;
+//     throw new Error("Dominio no autorizado");
+//   }
+// })();
 
 // 2. PREVENIR XSS Y SANEAMIENTO (funciones auxiliares)
 
