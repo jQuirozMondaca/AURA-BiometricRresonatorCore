@@ -53,6 +53,12 @@
           <a href="#sobre">Sobre</a>
           <a href="#servicios">Servicios</a>
           <a href="#contacto">Contacto</a>
+          <button
+            id="loginButton"
+            class="btn mono bg-transparent border-white/20 text-white ml-4"
+          >
+            Iniciar sesión
+          </button>
         </div>
       </div>
     </nav>
@@ -70,7 +76,7 @@
         Tecnología biométrica para potenciar la mente única.
       </h2>
       <div class="mt-8">
-        <a href="#sobre" class="btn mono">Descubre Más</a>
+        <a href="#sobre" class="btn mono">DESCUBRE MÁS</a>
       </div>
     </section>
 
@@ -206,6 +212,61 @@
       </form>
       <div id="formFeedback" class="mt-4 text-center mono text-sm"></div>
     </section>
+
+    <div id="loginModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-panel">
+        <div class="modal-header">
+          <h3>Iniciar sesión</h3>
+          <button
+            id="closeLoginModal"
+            class="modal-close"
+            aria-label="Cerrar modal"
+          >
+            ×
+          </button>
+        </div>
+        <form id="loginForm" class="space-y-5" novalidate>
+          <div>
+            <label
+              for="loginEmail"
+              class="block text-xs mono uppercase mb-2 opacity-70"
+              >Correo electrónico</label
+            >
+            <input
+              type="email"
+              id="loginEmail"
+              class="form-input"
+              placeholder="ejemplo@dominio.com"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="loginPassword"
+              class="block text-xs mono uppercase mb-2 opacity-70"
+              >Contraseña</label
+            >
+            <input
+              type="password"
+              id="loginPassword"
+              class="form-input"
+              placeholder="********"
+              required
+            />
+          </div>
+          <div id="loginFeedback" class="text-sm mono opacity-80"></div>
+          <div class="text-right">
+            <button
+              type="submit"
+              class="btn mono bg-transparent cursor-pointer"
+            >
+              Acceder
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <footer class="footer-custom mt-20">
       <div class="container text-center space-y-2">

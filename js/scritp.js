@@ -89,6 +89,67 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const loginButton = document.getElementById("loginButton");
+  const loginModal = document.getElementById("loginModal");
+  const closeLoginModal = document.getElementById("closeLoginModal");
+  const loginForm = document.getElementById("loginForm");
+  const loginFeedback = document.getElementById("loginFeedback");
+
+  function toggleLoginModal(open) {
+    if (!loginModal) return;
+    loginModal.classList.toggle("hidden", !open);
+    loginModal.setAttribute("aria-hidden", String(!open));
+    if (open) {
+      const emailInput = document.getElementById("loginEmail");
+      if (emailInput) emailInput.focus();
+    }
+  }
+
+  if (loginButton) {
+    loginButton.addEventListener("click", () => toggleLoginModal(true));
+  }
+
+  if (closeLoginModal) {
+    closeLoginModal.addEventListener("click", () => toggleLoginModal(false));
+  }
+
+  if (loginModal) {
+    loginModal.addEventListener("click", (event) => {
+      if (event.target === loginModal) {
+        toggleLoginModal(false);
+      }
+    });
+  }
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail");
+      const password = document.getElementById("loginPassword");
+      let valid = true;
+
+      if (!email.value.trim() || !validateEmail(email.value)) {
+        valid = false;
+      }
+
+      if (!password.value.trim()) {
+        valid = false;
+      }
+
+      if (valid) {
+        loginFeedback.textContent =
+          "Acceso simulado correcto. Bienvenido al núcleo AURA.";
+        loginFeedback.className = "text-sm mono text-emerald-400";
+        setTimeout(() => toggleLoginModal(false), 1200);
+        loginForm.reset();
+      } else {
+        loginFeedback.textContent =
+          "Por favor, ingresa correo y contraseña válidos.";
+        loginFeedback.className = "text-sm mono text-red-400";
+      }
+    });
+  }
+
   function validateEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(String(email).toLowerCase());
