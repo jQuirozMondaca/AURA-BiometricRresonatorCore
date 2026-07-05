@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // CONFIGURACIÓN: Reemplaza estos valores por los de tu cuenta EmailJS
   // service ID: 'service_xxx'  | template ID: 'template_xxx'
-  const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
-  const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+  const EMAILJS_SERVICE_ID = "service_3r5ozea";
+  const EMAILJS_TEMPLATE_ID = "template_vv42feb";
 
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
