@@ -50,11 +50,45 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================== */
   const contactForm = document.getElementById("contactForm");
   const formFeedback = document.getElementById("formFeedback");
+  const themeToggle = document.getElementById("themeToggle");
 
   // CONFIGURACIÓN: Reemplaza estos valores por los de tu cuenta EmailJS
   // service ID: 'service_xxx'  | template ID: 'template_xxx'
   const EMAILJS_SERVICE_ID = "service_3r5ozea";
   const EMAILJS_TEMPLATE_ID = "template_vv42feb";
+  let canvasBackground = "rgba(5, 8, 18, 0.25)";
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+    if (themeToggle) {
+      themeToggle.textContent = theme === "light" ? "☀️" : "🌙";
+      themeToggle.title =
+        theme === "light" ? "Cambiar a modo oscuro" : "Cambiar a modo claro";
+    }
+    canvasBackground =
+      theme === "light" ? "rgba(255, 255, 255, 0.15)" : "rgba(5, 8, 18, 0.25)";
+  }
+
+  function initTheme() {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+    const theme = savedTheme || (prefersDark ? "dark" : "light");
+    setTheme(theme);
+  }
+
+  if (themeToggle) {
+    themeToggle.classList.add("theme-toggle");
+    themeToggle.addEventListener("click", () => {
+      const currentTheme =
+        document.documentElement.getAttribute("data-theme") || "dark";
+      setTheme(currentTheme === "dark" ? "light" : "dark");
+    });
+  }
+
+  initTheme();
 
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
@@ -244,7 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function draw() {
       time += 0.008;
-      ctx.fillStyle = "rgba(5, 8, 18, 0.25)";
+      ctx.fillStyle = canvasBackground;
       ctx.fillRect(0, 0, w, h);
 
       const globalPulse = (Math.sin(time * 2) + 1) * 0.5;

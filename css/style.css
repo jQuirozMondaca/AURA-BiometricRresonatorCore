@@ -6,16 +6,43 @@
     --aura-blue: #004DFF;
     --cyan-glow: #60a5fa;
     --purple-glow: #8b5cf6;
+
+    --bg-light: #0b1220;
+    --bg-base: #000000;
+    --bg-accent: #0a1a2f;
+    --bg-secondary: #120b2a;
+    --panel-bg: rgba(255, 255, 255, 0.03);
+    --panel-border: rgba(255, 255, 255, 0.08);
+    --text-main: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.75);
+    --nav-bg: rgba(11, 18, 32, 0.5);
+    --btn-hover: rgba(34, 211, 238, 0.35);
+    --overlay-lines: rgba(255, 255, 255, 0.02);
+}
+
+:root[data-theme="light"] {
+    --bg-light: #eef6ff;
+    --bg-base: #f8fbff;
+    --bg-accent: #dbeafe;
+    --bg-secondary: #e0f2fe;
+    --panel-bg: rgba(255, 255, 255, 0.9);
+    --panel-border: rgba(15, 23, 42, 0.1);
+    --text-main: #0f172a;
+    --text-muted: rgba(15, 23, 42, 0.65);
+    --nav-bg: rgba(248, 250, 252, 0.8);
+    --btn-hover: rgba(34, 211, 238, 0.25);
+    --overlay-lines: rgba(15, 23, 42, 0.03);
 }
 
 body {
     margin: 0;
-    color: #fff;
+    color: var(--text-main);
     font-family: 'Inter', 'Work Sans', sans-serif;
     overflow-x: hidden;
-    background: radial-gradient(circle at 20% 20%, #0b1220, #000 60%),
-        radial-gradient(circle at 80% 40%, #0a1a2f, transparent 60%),
-        radial-gradient(circle at 40% 80%, #120b2a, transparent 55%);
+    background: radial-gradient(circle at 20% 20%, var(--bg-light), var(--bg-base) 60%),
+        radial-gradient(circle at 80% 40%, var(--bg-accent), transparent 60%),
+        radial-gradient(circle at 40% 80%, var(--bg-secondary), transparent 55%);
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
 #neuralCanvas {
@@ -35,13 +62,25 @@ body::before {
     position: fixed;
     inset: 0;
     background: repeating-linear-gradient(to bottom,
-            rgba(255, 255, 255, 0.02),
-            rgba(255, 255, 255, 0.02) 1px,
+            var(--overlay-lines),
+            var(--overlay-lines) 1px,
             transparent 2px,
             transparent 4px);
     pointer-events: none;
     z-index: 50;
     mix-blend-mode: overlay;
+}
+
+:root[data-theme="light"] #neuralCanvas {
+    filter: brightness(1.6) contrast(0.9) saturate(0.85);
+}
+
+:root[data-theme="light"] .navbar-custom,
+:root[data-theme="light"] .card,
+:root[data-theme="light"] .image-mockup-panel,
+:root[data-theme="light"] .modal-panel,
+:root[data-theme="light"] .footer-custom {
+    transition: background 0.4s ease, border-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* Loader / Boot */
@@ -106,8 +145,8 @@ body::before {
     top: 0;
     width: 100%;
     backdrop-filter: blur(12px);
-    background: rgba(11, 18, 32, 0.5);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--nav-bg);
+    border-bottom: 1px solid var(--panel-border);
     z-index: 100;
 }
 
@@ -124,6 +163,7 @@ body::before {
     font-weight: 700;
     font-size: 1.3rem;
     letter-spacing: 1px;
+    color: var(--text-main);
 }
 
 .navbar-custom .brand-sub {
@@ -131,16 +171,27 @@ body::before {
     color: rgba(255, 255, 255, 0.4);
 }
 
+:root[data-theme="light"] .navbar-custom .brand-sub {
+    color: rgba(15, 23, 42, 0.6);
+}
+
 .navbar-custom .nav-links a {
     margin-left: 20px;
     font-size: 0.85rem;
     opacity: 0.7;
-    transition: opacity 0.3s;
+    color: var(--text-main);
+    transition: opacity 0.3s, color 0.3s;
 }
 
 .navbar-custom .nav-links a:hover {
     opacity: 1;
     color: #60a5fa;
+}
+
+.navbar-custom .nav-links button,
+.navbar-custom .nav-links a,
+.navbar-custom .brand {
+    color: var(--text-main);
 }
 
 /* Componentes Visuales Únicos (Glow, Glitch, Cards) */
@@ -175,10 +226,10 @@ h1 {
 }
 
 .card {
-    border: 1px solid rgba(255, 255, 255, .08);
+    border: 1px solid var(--panel-border);
     padding: 30px;
     border-radius: 16px;
-    background: rgba(255, 255, 255, .02);
+    background: var(--panel-bg);
     backdrop-filter: blur(10px);
     transition: all 0.4s ease;
 }
@@ -195,7 +246,7 @@ h1 {
 
 .btn {
     padding: 12px 32px;
-    border: 1px solid rgba(255, 255, 255, .25);
+    border: 1px solid var(--panel-border);
     border-radius: 999px;
     display: inline-block;
     transition: .3s;
@@ -203,9 +254,15 @@ h1 {
 
 .btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(34, 211, 238, .35);
-    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 30px var(--btn-hover);
+    background: rgba(255, 255, 255, 0.08);
     border-color: rgba(34, 211, 238, 0.6);
+}
+
+.theme-toggle {
+    min-width: 48px;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
 }
 
 /* Efecto Glitch */
@@ -275,11 +332,11 @@ h1 {
 /* Formularios de Diseño Sci-fi */
 .form-input {
     width: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
     padding: 12px 16px;
     border-radius: 8px;
-    color: #fff;
+    color: var(--text-main);
     font-family: inherit;
     transition: all 0.3s;
 }
@@ -288,7 +345,7 @@ h1 {
     outline: none;
     border-color: #60a5fa;
     box-shadow: 0 0 15px rgba(96, 165, 250, 0.2);
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .error-msg {
