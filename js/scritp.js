@@ -79,12 +79,31 @@ document.addEventListener("DOMContentLoaded", () => {
     setTheme(theme);
   }
 
+  const navToggle = document.getElementById("navToggle");
+  const navLinks = document.querySelector(".navbar-custom .nav-links");
+
   if (themeToggle) {
     themeToggle.classList.add("theme-toggle");
     themeToggle.addEventListener("click", () => {
       const currentTheme =
         document.documentElement.getAttribute("data-theme") || "dark";
       setTheme(currentTheme === "dark" ? "light" : "dark");
+    });
+  }
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", open);
+      navToggle.textContent = open ? "✕" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+        navToggle.textContent = "☰";
+      });
     });
   }
 
