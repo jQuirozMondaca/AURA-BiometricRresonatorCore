@@ -145,7 +145,7 @@ body::before {
     top: 0;
     width: 100%;
     backdrop-filter: blur(12px);
-    background: var(--nav-bg);
+    background: transparent;
     border-bottom: 1px solid var(--panel-border);
     z-index: 100;
 }
@@ -477,6 +477,7 @@ h1 {
 @media (max-width: 768px) {
     .nav-toggle {
         display: inline-flex;
+        background: rgba(255, 255, 255, 0.08);
     }
 
     .navbar-custom {
@@ -487,7 +488,7 @@ h1 {
     .navbar-custom .nav-links {
         position: relative;
         inset: auto;
-        background: rgba(0, 0, 0, 0.92);
+        background: transparent;
         backdrop-filter: blur(20px);
         flex-direction: column;
         gap: 18px;
