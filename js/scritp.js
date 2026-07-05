@@ -46,14 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* ==========================================
-     4. VALIDACIÓN DE FORMULARIO DE CONTACTO
+     4. VALIDACIÓN Y ENVIÓ ASÍNCRONO (EMAILJS)
      ========================================== */
   const contactForm = document.getElementById("contactForm");
   const formFeedback = document.getElementById("formFeedback");
 
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+      e.preventDefault(); // Detiene la carga nativa de la página
 
       let isValid = true;
       const fields = ["nombre", "email", "mensaje"];
@@ -75,12 +75,32 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
+      // Si todos los campos pasan la validación frontend, disparamos a EmailJS
       if (isValid) {
         formFeedback.className =
-          "mt-4 text-center mono text-sm text-emerald-400";
+          "mt-4 text-center mono text-sm text-yellow-400 glow";
         formFeedback.innerText =
-          ">> TRANSMISIÓN EXITOSA: Datos inyectados al núcleo de forma segura.";
-        contactForm.reset();
+          ">> ENVIANDO SEÑAL AL NÚCLEO EN SEGUNDO PLANO...";
+
+        // Ejecución del envío asíncrono real a los servidores
+        emailjs
+          .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", contactForm)
+          .then(
+            () => {
+              formFeedback.className =
+                "mt-4 text-center mono text-sm text-emerald-400 glow";
+              formFeedback.innerText =
+                ">> TRANSMISIÓN EXITOSA: Datos inyectados al núcleo de forma segura.";
+              contactForm.reset(); // Limpia los inputs del formulario
+            },
+            (error) => {
+              formFeedback.className =
+                "mt-4 text-center mono text-sm text-red-400 glow";
+              formFeedback.innerText =
+                ">> FALLO EN EL ENLACE DE RED: " +
+                (error.text || "Error desconocido");
+            },
+          );
       } else {
         formFeedback.className = "mt-4 text-center mono text-sm text-red-400";
         formFeedback.innerText =
@@ -89,6 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* ==========================================
+     5. GESTIÓN DEL MODAL DE ACCESO (LOGIN)
+     ========================================== */
   const loginButton = document.getElementById("loginButton");
   const loginModal = document.getElementById("loginModal");
   const closeLoginModal = document.getElementById("closeLoginModal");
@@ -156,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ==========================================
-     5. NÚCLEO VIVO DE RED NEURONAL (CANVAS)
+     6. NÚCLEO VIVO DE RED NEURONAL (CANVAS)
      ========================================== */
   const canvas = document.getElementById("neuralCanvas");
   if (canvas) {

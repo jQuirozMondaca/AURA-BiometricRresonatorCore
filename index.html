@@ -28,6 +28,18 @@
     />
 
     <link rel="stylesheet" href="css/style.css" />
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "zIMTykmOCbCNHcI2c",
+        });
+      })();
+    </script>
   </head>
   <body>
     <script>
@@ -95,6 +107,8 @@
             para el aprendizaje, la creatividad y el bienestar.
           </p>
         </div>
+
+        <!-- imagen del eqipo de aura -->
         <div class="flex items-center justify-center">
           <div class="image-mockup-panel">
             <div class="panel-header mono">
@@ -161,6 +175,7 @@
             <input
               type="text"
               id="nombre"
+              name="nombre"
               class="form-input"
               placeholder="Tu nombre"
               required
@@ -178,6 +193,7 @@
             <input
               type="email"
               id="email"
+              name="email"
               class="form-input"
               placeholder="ejemplo@dominio.com"
               required
@@ -195,6 +211,7 @@
           >
           <textarea
             id="mensaje"
+            name="mensaje"
             rows="4"
             class="form-input"
             placeholder="¿Cómo podemos ayudarte?"
