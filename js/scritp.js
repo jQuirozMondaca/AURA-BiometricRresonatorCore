@@ -51,6 +51,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contactForm");
   const formFeedback = document.getElementById("formFeedback");
 
+  // CONFIGURACIÓN: Reemplaza estos valores por los de tu cuenta EmailJS
+  // service ID: 'service_xxx'  | template ID: 'template_xxx'
+  const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+  const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
       e.preventDefault(); // Detiene la carga nativa de la página
@@ -77,6 +82,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Si todos los campos pasan la validación frontend, disparamos a EmailJS
       if (isValid) {
+        // Verifica que el desarrollador haya configurado los IDs
+        if (
+          EMAILJS_SERVICE_ID === "YOUR_SERVICE_ID" ||
+          EMAILJS_TEMPLATE_ID === "YOUR_TEMPLATE_ID"
+        ) {
+          formFeedback.className =
+            "mt-4 text-center mono text-sm text-red-400 glow";
+          formFeedback.innerText =
+            ">> CONFIG ERROR: Reemplaza EMAILJS_SERVICE_ID y EMAILJS_TEMPLATE_ID con los valores de https://dashboard.emailjs.com/admin";
+          return;
+        }
+
         formFeedback.className =
           "mt-4 text-center mono text-sm text-yellow-400 glow";
         formFeedback.innerText =
@@ -84,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Ejecución del envío asíncrono real a los servidores
         emailjs
-          .sendForm("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", contactForm)
+          .sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm)
           .then(
             () => {
               formFeedback.className =
@@ -96,9 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
             (error) => {
               formFeedback.className =
                 "mt-4 text-center mono text-sm text-red-400 glow";
-              formFeedback.innerText =
-                ">> FALLO EN EL ENLACE DE RED: " +
-                (error.text || "Error desconocido");
+              // Muestra texto de error útil
+              const msg =
+                (error && (error.text || error.message)) || "Error desconocido";
+              formFeedback.innerText = ">> FALLO EN EL ENLACE DE RED: " + msg;
+              console.error("EmailJS send error:", error);
             },
           );
       } else {
