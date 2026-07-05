@@ -480,30 +480,33 @@ h1 {
     }
 
     .navbar-custom {
+        position: relative;
         padding-bottom: 0;
     }
 
     .navbar-custom .nav-links {
-        position: fixed;
-        inset: 72px 0 0 0;
+        position: relative;
+        inset: auto;
         background: rgba(0, 0, 0, 0.92);
         backdrop-filter: blur(20px);
         flex-direction: column;
         gap: 18px;
-        padding: 24px 0;
+        padding: 0 0 24px;
         margin: 0;
+        max-height: 0;
+        overflow: hidden;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-32px);
-        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        transform: none;
+        transition: max-height 0.35s ease, opacity 0.3s ease, visibility 0.3s ease;
         pointer-events: none;
-        z-index: 200;
+        z-index: auto;
     }
 
     .navbar-custom .nav-links.open {
+        max-height: 400px;
         opacity: 1;
         visibility: visible;
-        transform: translateY(0);
         pointer-events: auto;
     }
 
