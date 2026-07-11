@@ -127,8 +127,7 @@ body::before {
 
 .hero {
     width: 100%;
-    min-height: calc(95vh - 80px);
-    margin-top: 80px;
+    min-height: 95vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,6 +137,7 @@ body::before {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    margin-top: 80px;
     padding-top: 24px;
     overflow: hidden;
 }
