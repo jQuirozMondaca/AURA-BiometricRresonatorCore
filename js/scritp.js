@@ -34,18 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   /* ==========================================
-     3. EFECTO PARALLAX CONTROLADO HERO
-     ========================================== */
-  document.addEventListener("mousemove", (e) => {
-    const heroSection = document.querySelector(".hero");
-    if (heroSection) {
-      const x = (window.innerWidth / 2 - e.clientX) * 0.005;
-      const y = (window.innerHeight / 2 - e.clientY) * 0.005;
-      heroSection.style.transform = `translate(${x}px, ${y}px)`;
-    }
-  });
-
-  /* ==========================================
      4. VALIDACIÓN Y ENVIÓ ASÍNCRONO (EMAILJS)
      ========================================== */
   const contactForm = document.getElementById("contactForm");
